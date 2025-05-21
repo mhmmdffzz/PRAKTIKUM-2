@@ -5,24 +5,26 @@ import (
 	"time"
 )
 
+// InputJawabanKuesioner meminta input jawaban kuesioner dengan validasi
 func InputJawabanKuesioner(jumlahPertanyaan int) []int {
 	jawaban := make([]int, jumlahPertanyaan)
 	for i := 0; i < jumlahPertanyaan; i++ {
 		for {
-			fmt.Printf("Pertanyaan %d: ", i+1)
+			fmt.Printf("Pertanyaan %d (1-5): ", i+1)
 			var input int
-			fmt.Scan(&input)
-			if input >= 1 && input <= 5 {
-				jawaban[i] = input
-				break
-			} else {
-				fmt.Println("Error: Masukkan angka 1-5")
+			_, err := fmt.Scan(&input)
+			if err != nil || input < 1 || input > 5 {
+				fmt.Println("Error: Masukkan angka antara 1-5")
+				continue
 			}
+			jawaban[i] = input
+			break
 		}
 	}
 	return jawaban
 }
 
+// HitungTotalSkor menghitung total skor dari jawaban kuesioner
 func HitungTotalSkor(jawaban []int) int {
 	total := 0
 	for _, nilai := range jawaban {
@@ -31,7 +33,11 @@ func HitungTotalSkor(jawaban []int) int {
 	return total
 }
 
-func FormatTanggal(tanggalString string) time.Time {
-	tanggal, _ := time.Parse("02-01-2006", tanggalString)
-	return tanggal
+// FormatTanggal mengkonversi string ke time.Time dengan format dd-mm-yyyy
+func FormatTanggal(tanggalString string) (time.Time, error) {
+	tanggal, err := time.Parse("02-01-2006", tanggalString)
+	if err != nil {
+		return time.Time{}, fmt.Errorf("format tanggal salah, gunakan dd-mm-yyyy")
+	}
+	return tanggal, nil
 }

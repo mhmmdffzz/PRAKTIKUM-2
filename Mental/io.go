@@ -9,16 +9,17 @@ import (
 func InputJawabanKuesioner(jumlahPertanyaan int) []int {
 	jawaban := make([]int, jumlahPertanyaan)
 	for i := 0; i < jumlahPertanyaan; i++ {
-		for {
-			fmt.Printf("Pertanyaan %d (1-5): ", i+1)
+		inputValid := false
+		for !inputValid {
+			fmt.Printf("Pertanyaan %d: ", i+1)
 			var input int
-			_, err := fmt.Scan(&input)
-			if err != nil || input < 1 || input > 5 {
-				fmt.Println("Error: Masukkan angka antara 1-5")
-				continue
+			fmt.Scan(&input)
+			if input >= 1 && input <= 5 {
+				jawaban[i] = input
+				inputValid = true // Keluar dari loop saat input valid
+			} else {
+				fmt.Println("Error: Masukkan angka 1-5")
 			}
-			jawaban[i] = input
-			break
 		}
 	}
 	return jawaban

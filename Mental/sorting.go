@@ -1,3 +1,3 @@
 package main
 
-// prosses go
+// prosses kakk

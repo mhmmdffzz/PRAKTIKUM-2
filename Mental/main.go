@@ -17,7 +17,6 @@ func main() {
 		fmt.Println("5. Rata-rata Skor 30 Hari Terakhir")
 		fmt.Println("6. Urutkan Assessment")
 		fmt.Println("7. Cari Assessment")
-		fmt.Println("8. Tampilkan Rekomendasi Terbaru")
 		fmt.Println("0. Keluar")
 		fmt.Print("Pilih menu: ")
 
@@ -74,25 +73,22 @@ func main() {
 			UbahAssessment(&dataAssessment, idAssessment, assessmentBaru)
 
 		case 3:
-			fmt.Println("progress.")
+			fmt.Println("progress")
 
 		case 4:
-			fmt.Println("progress.")
+			fmt.Println("progress")
 
 		case 5:
-			fmt.Println("progress.")
+			fmt.Println("progress")
 
 		case 6:
-			fmt.Println("progress.")
+			fmt.Println("progress")
 
 		case 7:
-			fmt.Println("progress.")
-
-		case 8:
-			fmt.Println("progress.")
+			fmt.Println("progress")
 
 		case 0:
-			fmt.Println("Terima kasih telah menggunakan aplikasi ini!")
+			fmt.Println("Thanks")
 			return
 
 		default:

@@ -17,14 +17,3 @@ func UbahAssessment(dataAssessment *[]Assessment, idAssessment string, assessmen
 	}
 	fmt.Println("Assessment tidak ditemukan.")
 }
-
-func HapusAssessment(dataAssessment *[]Assessment, idAssessment string) {
-	for i := range *dataAssessment {
-		if (*dataAssessment)[i].IDAssessment == idAssessment {
-			*dataAssessment = append((*dataAssessment)[:i], (*dataAssessment)[i+1:]...)
-			fmt.Println("Assessment berhasil dihapus!")
-			return
-		}
-	}
-	fmt.Println("Assessment tidak ditemukan.")
-}
